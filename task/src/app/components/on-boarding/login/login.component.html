@@ -1,43 +1,42 @@
-<!-- <p>login works!</p> -->
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <section class="vh-100 gradient-custom">
-      <div class="container py-5 h-100">
-        <div class="row justify-content-center align-items-center h-100">
-          <div class="col-12 col-lg-9 col-xl-7">
-            <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-              <div class="card-body p-4 p-md-5">
-                <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login Form</h3>
-                
-                <div class="col-md-6 mb-4 pb-2">
-                    <div class="form-outline">
-                      <input type="tel" id="phone" class="form-control form-control-lg" formControlName="phone" />
-                      <label class="form-label" for="phone">Phone Number *</label>
-                    </div>
-                    <div *ngIf="(f['phone'].invalid && (f['phone'].dirty || f['phone'].touched))" class="text-danger">
-                      Phone Number is required.
-                    </div>
+  <section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Login Form</h3>
+              
+              <div class="col-md-6 mb-4 pb-2">
+                  <div class="form-outline">
+                    <input type="tel" id="phone" class="form-control form-control-lg" formControlName="phone" />
+                    <label class="form-label" for="phone">Phone Number *</label>
+                  </div>
+                  <div *ngIf="(f['phone'].invalid && (f['phone'].dirty || f['phone'].touched))" class="text-danger">
+                    <div *ngIf="f['phone'].errors?.['required']"> Phone Number is required.</div>
                   </div>
                 </div>
-                
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="password" class="form-control form-control-lg" formControlName="password" />
-                      <label class="form-label" for="password">Password *</label>
-                    </div>
-                    <div *ngIf="(f['password'].invalid && (f['password'].dirty || f['password'].touched))" class="text-danger">
-                      Password is required.
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="mt-4 pt-2">
-                    <button class="btn btn-primary btn-lg" type="submit">Submit</button>
-                    <a routerLink="/reset" class="btn btn-link">Reset Password</a>
-                  </div>
               </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="password" class="form-control form-control-lg" formControlName="password" />
+                    <label class="form-label" for="password">Password *</label>
+                  </div>
+                  <div *ngIf="(f['password'].invalid && (f['password'].dirty || f['password'].touched))" class="text-danger">
+                    <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mt-4 pt-2">
+                  <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                  <a routerLink="/reset" class="btn btn-link">Reset Password</a>
+                </div>
             </div>
           </div>
         </div>
-    </section>
-  </form>
+      </div>
+  </section>
+</form>

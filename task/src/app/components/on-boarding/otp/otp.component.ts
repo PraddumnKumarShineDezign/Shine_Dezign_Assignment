@@ -46,16 +46,7 @@ export class OtpComponent  implements OnInit{
 
   onSubmit() {
     const otpValues = this.formInput.map(input => this.form.get(input)?.value.toString()).join('');
-    // const otpNumber = parseInt(otpValues, 10); // Convert OTP string to number
-    // if (typeof otpValues === "string") {
-    //   console.log("value is a string");
-    // } else if (typeof otpValues === "number") {
-    //   console.log("value is a number");
-    // } else if (typeof otpValues === "boolean") {
-    //   console.log("value is a boolean");
-    // } else {
-    //   console.log("value is of an unknown type");
-    // }
+ 
     console.log("otp", otpValues);
     
     this.apiService.otp( {otp: otpValues} ).subscribe(
