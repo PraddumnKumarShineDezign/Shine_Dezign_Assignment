@@ -9,8 +9,13 @@ import { SignupComponent } from './components/on-boarding/signup/signup.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { OtpComponent } from './components/on-boarding/otp/otp.component';
 import { ReactiveFormsModule} from '@angular/forms';
-import {  HttpClientModule } from '@angular/common/http';
+import {  HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResetPasswordComponent } from './components/on-boarding/reset-password/reset-password.component';
+import { ForgetPasswordComponent } from './components/on-boarding/forget-password/forget-password.component';
+import { OnUpdatePasswordComponent } from './components/on-boarding/on-update-password/on-update-password.component';
+import { ChangePasswordComponent } from './components/on-boarding/change-password/change-password.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { HeaderComponent } from './layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,11 @@ import { ResetPasswordComponent } from './components/on-boarding/reset-password/
     LoginComponent,
     SignupComponent,
     OtpComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ForgetPasswordComponent,
+    OnUpdatePasswordComponent,
+    ChangePasswordComponent,
+    HeaderComponent
     
   ],
   imports: [
@@ -34,7 +43,7 @@ import { ResetPasswordComponent } from './components/on-boarding/reset-password/
     HttpClientModule
   ],
   providers: [
-    
+    {provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}
   ],
   bootstrap: [AppComponent]
 })
