@@ -1,0 +1,67 @@
+
+<div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9; margin-top: -7%;">
+    <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+      <!-- <h1>Edit User</h1> -->
+    </div>
+    <div class="formbg-outer">
+      <div class="formbg">
+        <div class="formbg-inner padding-horizontal--48">
+          <span class="padding-bottom--15 text-danger">* Admin Edit User Account</span>
+          <form [formGroup]="userEdit"   (ngSubmit)="edit()">
+            <div class="field padding-bottom--24">
+                <label for="name">First Name</label>
+                
+                <input type="text" id="name" formControlName="firstName">
+                <div *ngIf="validateFiled['firstName'].touched && validateFiled['firstName'].invalid" class="error">
+                  <div *ngIf="validateFiled['firstName'].errors && validateFiled['firstName'].errors['required']">First firstName is required.</div>
+                  <div *ngIf="validateFiled['firstName'].errors && validateFiled['firstName'].errors['minlength']">First firstName should be 3-20 character..</div>
+                  <div *ngIf="validateFiled['firstName'].errors && validateFiled['firstName'].errors['pattern']">Special Character not allowed..</div>
+              
+              </div>
+              </div>
+
+              <!--last name -->
+              <div class="field padding-bottom--24">
+                <label for="name">Last Name</label>
+                
+                <input type="text" id="name" formControlName="lastName">
+                <div *ngIf="validateFiled['lastName'].touched && validateFiled['lastName'].invalid" class="error">
+                  <div *ngIf="validateFiled['lastName'].errors && validateFiled['lastName'].errors['required']">First lastName is required.</div>
+                  <div *ngIf="validateFiled['lastName'].errors && validateFiled['lastName'].errors['minlength']">First lastName should be 3-20 character..</div>
+                  <div *ngIf="validateFiled['lastName'].errors && validateFiled['lastName'].errors['pattern']">Special Character not allowed..</div>
+              
+              </div>
+              </div>
+            <div class="field padding-bottom--24">
+              <label for="phone">Phone</label>
+              <input type="text" name="phone" formControlName="phone" readonly>
+              <div *ngIf="validateFiled['phone'].touched && validateFiled['phone'].invalid" class="error">
+                <div *ngIf="validateFiled['phone'].errors && validateFiled['phone'].errors['required']">phone Adrress is required.</div>
+                <!-- <div *ngIf="validateFiled['phone'].errors && validateFiled['phone'].errors['pattern']">Invaild Email Address..</div> -->
+            
+            </div>
+            </div>
+            <div class="field padding-bottom--24">
+              <div class="grid--50-50">
+                <label for="password">User Role</label>
+              <input type="text" name="role" formControlName="role" readonly>
+              
+              </div>
+              <div *ngIf="validateFiled['role'].touched && validateFiled['role'].invalid" class="error">
+                <div *ngIf="validateFiled['role'].errors && validateFiled['role'].errors['required']">User role  is required.</div>
+            </div>
+            </div>
+            
+           
+            <div class="field padding-bottom--24">
+              <!-- <button type="submit" style="background-color: blue;"> SignUp</button> -->
+                <input type="submit" id="btn"  value="Save Changes"style="background-color: blue;" >                  
+              </div>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

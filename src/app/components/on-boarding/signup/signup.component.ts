@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
         this.apiService.signUp(this.registrationForm.value).subscribe(
         (response) => {
           console.log('Signup successful', response);
-          console.log("response..........",response);
+          // console.log("response..........",response);
           this.router.navigate(['/otp']);
         },
         (error) => {

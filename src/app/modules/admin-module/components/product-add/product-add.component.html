@@ -1,0 +1,151 @@
+<div class="container" style="margin-top: 2%; margin-bottom: 2%;">
+    <div class="row">
+        <section class="vh-350" style="background-color: #2779e2;">
+            <div class="container h-100">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-xl-9">
+                    <form [formGroup]="ProductAddForm" (ngSubmit)="onSubmit();" enctype="multipart/form-data"> 
+
+                  <h1 class="text-white mb-4 text-center">Add for a Product</h1>
+          
+                  <div class="card" style="border-radius: 15px;margin-bottom: 6%;">
+                    <div class="card-body">
+          
+                      <div class="row align-items-center pt-4 pb-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Product Name</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" class="form-control form-control-lg" placeholder="Enter Product Name" formControlName="productName" />
+          
+                        </div>
+                        <div *ngIf="validateFiled['productName'].touched && validateFiled['productName'].invalid" class="error">
+                            <div *ngIf="validateFiled['productName'].errors && validateFiled['productName'].errors['required']">Product productName is required.</div>
+                            <div *ngIf="validateFiled['productName'].errors && validateFiled['productName'].errors['minlength']">min 5 character required.</div>
+                            <div *ngIf="validateFiled['productName'].errors && validateFiled['productName'].errors['maxlength']">max 20 character required.</div>
+                         <div *ngIf="validateFiled['productName'].errors && validateFiled['productName'].errors['pattern']">Invaild Product Name pattern not match..</div>
+                        
+                            
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+          
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Product Price</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" class="form-control form-control-lg" placeholder="example -  Rs 50" formControlName="price"/>
+          
+                        </div>
+                        <div *ngIf="validateFiled['price'].touched && validateFiled['price'].invalid" class="error">
+                            <div *ngIf="validateFiled['price'].errors && validateFiled['price'].errors['required']">Product Price is required.</div>
+                            <div *ngIf="validateFiled['price'].errors && validateFiled['price'].errors['minlength']">min 0 character required.</div>
+                            <div *ngIf="validateFiled['price'].errors && validateFiled['price'].errors['maxlength']">max 20 character required.</div>
+                         <div *ngIf="validateFiled['price'].errors && validateFiled['price'].errors['pattern']">Invaild Product Price Only Number Allwed..</div>
+                            
+                        </div>
+                        
+                      </div>
+
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Product Quantity</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input type="text" class="form-control form-control-lg" placeholder="example - Qty 05" formControlName="quantity"/>
+          
+                        </div>
+                        <div *ngIf="validateFiled['quantity'].touched && validateFiled['quantity'].invalid" class="error">
+                            <div *ngIf="validateFiled['quantity'].errors && validateFiled['quantity'].errors['required']">Product Quantity is required.</div>
+                            <div *ngIf="validateFiled['quantity'].errors && validateFiled['quantity'].errors['minlength']">min 0 character required.</div>
+                            <div *ngIf="validateFiled['quantity'].errors && validateFiled['quantity'].errors['maxlength']">max 20 character required.</div>
+                         <div *ngIf="validateFiled['quantity'].errors && validateFiled['quantity'].errors['pattern']">Invaild Product Quantity Only Number Allwed..</div>
+                            
+                        </div>
+                      </div>
+
+                      <!-- <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Product Status</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+                            <select class="select form-control form-control-lg" formControlName="status">
+                              <option value=" ">Select Product Status</option>
+                              <option value="1">Active</option>
+                              <option value="2">Deactivate</option>
+                            </select>
+                        </div>
+                      </div> -->
+          
+                      <hr class="mx-n3">
+          
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0">Product Description </h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <textarea class="form-control" rows="3" placeholder="Message sent to the product description" formControlName="description"></textarea>
+          
+                        </div>
+                        <div *ngIf="validateFiled['description'].touched && validateFiled['description'].invalid" class="error">
+                            <div *ngIf="validateFiled['description'].errors && validateFiled['description'].errors['required']">Product description is required.</div>
+                            <div *ngIf="validateFiled['description'].errors && validateFiled['description'].errors['minlength']">min 20 character required.</div>
+                            <div *ngIf="validateFiled['description'].errors && validateFiled['description'].errors['maxlength']">max 200 character required.</div>
+                         <!-- <div *ngIf="validateFiled['description'].errors && validateFiled['description'].errors['pattern']">Invaild Product description..</div> -->
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+          
+                      <div class="row align-items-center py-3">
+                        <div class="col-md-3 ps-5">
+          
+                          <h6 class="mb-0"> Product Image Upload</h6>
+          
+                        </div>
+                        <div class="col-md-9 pe-5">
+          
+                          <input class="form-control form-control-lg" id="formFileLg" (change)="onFileSelected($event)" accept="image/*" type="file" formControlName="image"/>
+                          <div class="small text-muted mt-2">Upload your product images or any other relevant file. Max file
+                            size 50 MB</div>
+          
+                        </div>
+                        <div *ngIf="validateFiled['image'].touched && validateFiled['image'].invalid" class="error">
+                            <div *ngIf="validateFiled['image'].errors && validateFiled['image'].errors['required']">Product image is required.</div>
+                            
+                        </div>
+                      </div>
+          
+                      <hr class="mx-n3">
+          
+                      <div class="px-5 py-4">
+                        <button type="submit" class="btn btn-primary btn-lg">Add Product</button>
+                        <button style="margin-left: 2%;" type="button" class="btn btn-danger btn-lg" (click)="onGoToDashbaord()">Go To Dashboard</button>
+                      
+                      </div>
+          
+                    </div>
+                  </div>
+                </form>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+</div>

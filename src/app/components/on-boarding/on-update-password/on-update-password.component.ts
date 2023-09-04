@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
+import { CommonService } from 'src/app/services/common.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-on-update-password',
@@ -8,8 +10,9 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./on-update-password.component.scss']
 })
 export class OnUpdatePasswordComponent {
-
-  constructor(private fb: FormBuilder, private _apiService:ApiService) {}
+  
+  errorMessage:string='';
+  constructor(private fb: FormBuilder, private _apiService:ApiService, private _commonService:CommonService) {}
 
   onUpdateForgetPasswordForm = this.fb.group({
     otp: ['',
@@ -47,9 +50,17 @@ export class OnUpdatePasswordComponent {
     console.log("forPassword Onsubmit")
     this._apiService.updateForgetPass(this.onUpdateForgetPasswordForm.value).subscribe((result:any)=>{
       console.log("api result",result);
-      // this.router.navigate(['/emailverify'])
-      // this.ProductAddForm.reset();
-    });
+      if(result.status === 200){
+        this._commonService.showSuccess('success',result.message);
+      }
+      
+    },
+    (error: HttpErrorResponse) => {
+      // Handle the error response here
+      console.error('Error occurred:', error.error.message);
+      this._commonService.showError('error',error.error.message)
+    }
+    );
     
      
    } 

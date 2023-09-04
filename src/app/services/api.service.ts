@@ -10,7 +10,7 @@ export class ApiService {
   private otpUrl = 'http://192.168.10.53:3000/verify/otpverification';
   private loginUrl ="http://192.168.10.53:3000/login/loginUser";
   // private forgetPassword = "";
-  private resetPassword = "http://192.168.10.2:3000/onboarding/resetPassword";
+  // private resetPassword = "http://192.168.10.2:3000/onboarding/resetPassword";
 
   //api url path define pks
   private forgetPassword = 'http://192.168.10.53:3000/onboarding/forgotPassword'
@@ -20,7 +20,7 @@ export class ApiService {
 
   //forget Password 
   forgetPasswordFun(data:any){
-    return this.http.post(this.forgetPassword,data);
+    return this.http.post(this.forgetPassword,data)
   }
 
   //update-forget password fun
@@ -33,7 +33,9 @@ export class ApiService {
     return   this.http.put(this.changePassword,data);
   }
 
+  
 
+  //kawan task =====> Function
   signUp(data: any): Observable<any> {
     console.log("data",data);
     return this.http.post(this.apiUrl, data);
@@ -51,8 +53,8 @@ export class ApiService {
     return this.http.post(this.forgetPassword,data)
   }
 
-  resetPas(data:any):Observable<any>{
-    return this.http.post(this.resetPassword,data)
-  }
+  // resetPas(data:any):Observable<any>{
+  //   return this.http.post(this.resetPassword,data)
+  // }
 }
 

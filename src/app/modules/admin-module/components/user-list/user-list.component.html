@@ -1,0 +1,60 @@
+
+<h1 class="text-center text-warning">Welcome to Admin Panel<span class="text-danger"> All Users List </span></h1>
+<div class="form-outline mb-4" style="width: 38%; margin-left: 28%;">
+  <!-- <input style="border: none;" type="search" [(ngModel)]='searchText' class="form-control" id="datatable-search-input" placeholder="Search By Name ..." > -->
+  <!-- <button type="button" class="btn btn-primary" style="margin-left: 93%;
+  margin-top: -12%;">
+    <i class="fas fa-search"></i>
+  </button> -->
+</div>
+<table class="table table-bordered text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Sr.No</th>
+        <!-- <th scope="col"><i class="fa-solid fa-sort"></i>User Id</th> -->
+        <th scope="col"><i class="fa-solid fa-sort"></i>First Name</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Last Name</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Phone</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Role</th>
+        <!-- <th scope="col"><i class="fa-solid fa-sort"></i>Phone Verify</th> -->
+        <th scope="col"><i class="fa-solid fa-sort"></i>Account Status</th>
+        <th>Edit User</th>
+        <th >Delete User</th>
+      </tr>
+    
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of data | search:searchText; index as i">
+        <!-- {{data}} -->
+        <td *ngIf="!data.notFound">{{i+1}}</td>
+        <!-- <td> {{data._id}} </td> -->
+        <td>{{data.firstname}}</td>
+        <td>{{data.lastname}}</td>
+        <td>{{data.phone}}</td>
+        <td>{{data.role}}</td>
+        <!-- <td>{{data.isAdmin}}</td> -->
+        <td>{{data.phoneVerify}}</td>
+        <td *ngIf="!data.notFound"> <a  (click)="sendidBybtn(data._id)" class="btn btn-warning">
+            <!-- <i title="edit user" class="fa fa-edit"></i> -->
+            Edit
+        </a> 
+             <!-- <button type="submit" class="btn btn-warning" routerLink="/admin/editUser">Edit</button>  -->
+        </td>
+            <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
+        <td *ngIf="!data.notFound"> <a (click)="deleteUser(data._id)" class="btn btn-danger"> 
+            <!-- <i style="color:red;" title="delete user" class="bi bi-trash"></i> -->
+            Delete
+        </a> 
+        </td>
+      </tr>
+      <!-- <tr *ngFor="let data of data | search:searchText;">
+        <td *ngIf="data.notFound" colspan="9"> <strong>No records found.</strong> </td>
+      </tr> -->
+    </tbody>
+  </table>
+  <hr>
+  <!-- <div class="form-control">
+<h1 class="text-center text-warning">Total Users <span class="text-danger">{{totalUsers}}</span></h1>
+</div> -->
+<router-outlet></router-outlet>
