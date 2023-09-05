@@ -15,7 +15,6 @@ export class AuthGuard implements CanActivate {
     if (localStorage.getItem('role') === 'ADMIN') {
       return true;
      this.router.navigate(['/admin-dashboard']);
-    
     }
     // User is not logged in, redirect to login page
     this.router.navigate(['/user-dashboard']);

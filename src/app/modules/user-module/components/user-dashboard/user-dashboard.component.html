@@ -1,0 +1,26 @@
+<!-- <app-sidebar></app-sidebar> -->
+<button type="button" class="btn btn-info buttonn"  (click)="redirectToProducts()">Products</button><br><br><br>  <div class="table-responsive">
+    <table class="table custom-table">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of data">
+          <td>{{ product.productName }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+<router-outlet></router-outlet>
