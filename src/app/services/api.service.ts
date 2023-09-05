@@ -22,7 +22,7 @@ export class ApiService {
   forgetPasswordFun(data:any){
     return this.http.post(this.forgetPassword,data)
   }
-
+  
   //update-forget password fun
   updateForgetPass(data:any){
     return  this.http.put(this.onUpdatePasswored,data);

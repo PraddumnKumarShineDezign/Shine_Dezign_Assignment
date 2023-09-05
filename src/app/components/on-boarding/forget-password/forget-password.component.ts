@@ -30,16 +30,18 @@ export class ForgetPasswordComponent {
   }
 
    //submit funtion
+
    onSubmit() {
     this.forgetPasswordForm.markAllAsTouched();
    if (this.forgetPasswordForm.valid) {
     // console.log("forPassword Onsubmit")
     this._apiService.forgetPasswordFun(this.forgetPasswordForm.value).subscribe((result:any)=>{
-      console.log("api result",result);
+      // console.log("api result",result);
+      // console.log("userIdFO", result.data._id)
       // this.ProductAddForm.reset();
       if(result.status === 200){
         this._commonService.showSuccess('success',result.message);
-      this.router.navigate(['/forget-updatePassword'])
+      this.router.navigate(['/forget-updatePassword',result.data._id])
       
       }
     },

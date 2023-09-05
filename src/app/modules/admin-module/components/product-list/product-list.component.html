@@ -1,5 +1,5 @@
 
-<h1 class="text-center text-warning"><span class="text-danger"> All Users List </span></h1>
+<h1 class="text-center text-warning"><span class="text-danger"> All Product List </span></h1>
 <div class="form-outline mb-4" style="width: 38%; margin-left: 28%;">
   <!-- <input style="border: none;" type="search" [(ngModel)]='searchText' class="form-control" id="datatable-search-input" placeholder="Search By Name ..." > -->
   <!-- <button type="button" class="btn btn-primary" style="margin-left: 93%;
@@ -12,29 +12,31 @@
       <tr>
         <th scope="col"><i class="fa-solid fa-sort"></i>Sr.No</th>
         <!-- <th scope="col"><i class="fa-solid fa-sort"></i>User Id</th> -->
-        <th scope="col"><i class="fa-solid fa-sort"></i>First Name</th>
-        <th scope="col"><i class="fa-solid fa-sort"></i>Last Name</th>
-        <th scope="col"><i class="fa-solid fa-sort"></i>Phone</th>
-        <th scope="col"><i class="fa-solid fa-sort"></i>Role</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Image</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Product Name</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Product Description</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i>Product Price</th>
         <!-- <th scope="col"><i class="fa-solid fa-sort"></i>Phone Verify</th> -->
-        <th scope="col"><i class="fa-solid fa-sort"></i>Account Status</th>
+        <th scope="col"><i class="fa-solid fa-sort"></i> Product Quantity</th>
         <th>Edit User</th>
         <th >Delete User</th>
       </tr>
-    
-
     </thead>
+
     <tbody>
       <tr *ngFor="let data of data | search:searchText; index as i">
         <!-- {{data}} -->
         <td *ngIf="!data.notFound">{{i+1}}</td>
         <!-- <td> {{data._id}} </td> -->
-        <td>{{data.firstname}}</td>
-        <td>{{data.lastname}}</td>
-        <td>{{data.phone}}</td>
-        <td>{{data.role}}</td>
+        <td>
+          <img style="border-radius: 50%;" src="{{serverRunning+data.image}}" width="50px" height="50px">
+            <!-- {{data.image}} -->
+        </td>
+        <td>{{data.productName}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.price}}</td>
         <!-- <td>{{data.isAdmin}}</td> -->
-        <td>{{data.phoneVerify}}</td>
+        <td>{{data.quantity}}</td>
         <td *ngIf="!data.notFound"> <a  (click)="sendidBybtn(data._id)" class="btn btn-warning">
             <!-- <i title="edit user" class="fa fa-edit"></i> -->
             Edit
@@ -42,7 +44,7 @@
              <!-- <button type="submit" class="btn btn-warning" routerLink="/admin/editUser">Edit</button>  -->
         </td>
             <!-- <button type="submit" class="btn btn-danger">Delete</button> -->
-        <td *ngIf="!data.notFound"> <a (click)="deleteUser(data._id)" class="btn btn-danger"> 
+        <td *ngIf="!data.notFound"> <a (click)="deleteProduct(data._id)" class="btn btn-danger"> 
             <!-- <i style="color:red;" title="delete user" class="bi bi-trash"></i> -->
             Delete
         </a> 

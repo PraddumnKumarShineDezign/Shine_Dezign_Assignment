@@ -7,6 +7,7 @@ import { ForgetPasswordComponent } from './components/on-boarding/forget-passwor
 import { OnUpdatePasswordComponent } from './components/on-boarding/on-update-password/on-update-password.component';
 import { ChangePasswordComponent } from './components/on-boarding/change-password/change-password.component';
 import { AdminModule } from './modules/admin-module/admin.module';
+import { AdminGuard } from 'src/app/guards/auth.guards';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signup', pathMatch: 'full' },  
@@ -14,10 +15,10 @@ const routes: Routes = [
   {path:'otp',component:OtpComponent},
   {path:'login',component:LoginComponent},
   {path:'forget-password',component:ForgetPasswordComponent},
-  {path:'forget-updatePassword',component:OnUpdatePasswordComponent},
+  {path:'forget-updatePassword/:id',component:OnUpdatePasswordComponent},
   {path:'change-password',component:ChangePasswordComponent},
   //load admin module lazy
-  { path:'admin', loadChildren: () => AdminModule },
+  { path:'admin', canActivate:[AdminGuard], loadChildren: () => AdminModule },
 
 
 

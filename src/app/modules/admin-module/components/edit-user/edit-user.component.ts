@@ -3,7 +3,7 @@ import {   Validators, FormBuilder } from '@angular/forms';
 import { Router,ActivatedRoute} from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { AdminService } from '../../admin-service/admin.service';
-
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
@@ -100,7 +100,13 @@ export class EditUserComponent {
        
       }
       // this.userEdit.reset();
-    });
+    },
+    (error: HttpErrorResponse) => {
+      // Handle the error response here
+      console.error('Error occurred:', error.error.message);
+      this._commonService.showError('error',error.error.message)
+    }
+    );
   }
    
  }

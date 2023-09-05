@@ -8,6 +8,8 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
 import { UserListComponent } from './components/user-list/user-list.component';
 import { SearchPipe } from 'src/app/pipes/search.pipe';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
 @NgModule({
   declarations: [
     AdminDashboardComponent,
@@ -15,7 +17,9 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     AccessDeniedComponent,
     UserListComponent,
     SearchPipe,
-    EditUserComponent
+    EditUserComponent,
+    ProductListComponent,
+    ProductEditComponent
   ],
   imports: [
     CommonModule,

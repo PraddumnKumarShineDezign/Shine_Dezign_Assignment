@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { AdminService } from '../../admin-service/admin.service';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -9,7 +10,7 @@ import { AdminService } from '../../admin-service/admin.service';
 })
 export class UserListComponent {
   constructor(private _adminService:AdminService,
-    private toastr:CommonService, private router:Router){}
+    private _commonService:CommonService, private router:Router){}
   data:any;
   totalUsers:any;
   ngOnInit(): void {
@@ -32,18 +33,28 @@ export class UserListComponent {
       
   }
  deleteUser(id:any){
-    // console.log("id",id)
+    console.log("id",id)
   
-  // this._adminService.delUser({userId:id}).subscribe((res:any)=>{
-  //   // console.log("del",res);
-  //   if(res.status===401){
-  //     this.toastr.showError("!Oh error occured", 'user account not deleted')
-  //   }
-  //   if(res.status===200){
-  //     this.toastr.showSuccess("user account deleted", 'deleted account');
-  //     // this.router.navigate(['/admin/dashboard'])
-  //   }
-  // })
+  this._adminService.deleteUser({id}).subscribe((res:any)=>{
+    console.log("del",res);
+    if(res.status===200){
+      this._commonService.showSuccess("user account deleted", 'deleted account');
+      window.location.reload();
+      // this.router.navigate(['/admin/dashboard'])
+    }
+    // else{
+    // this.toastr.showError("!Oh error occured", 'user account not deleted')
+    
+    // }
+
+  },
+  (error: HttpErrorResponse) => {
+    // Handle the error response here
+    console.error('Error occurred:', error);
+    console.error('Error occurred:', error.error.message);
+    this._commonService.showError('error',error.error.message)
+  }
+  )
  }
  searchText:any;
 }
