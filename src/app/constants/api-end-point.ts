@@ -10,5 +10,9 @@ export const API_PATH = {
     EDIT_PRODUCT : 'product/updateProduct',
     DELETE_PRODUCT : 'product/deleteProduct',
 
+    //onBoarding Api path
+    FORGET_PASSWORD : 'onboarding/forgotPassword',
+    ON_UPDATE_FORGET_PASSWORD : 'onboarding/updateForgotPassword',
+    CHANGE_PASSWORD : 'onboarding/resetPassword',
 
 }

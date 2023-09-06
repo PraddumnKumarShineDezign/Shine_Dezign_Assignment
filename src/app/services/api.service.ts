@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import { environment } from 'src/environment/environment';
+import { API_PATH } from '../constants/api-end-point';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,11 +14,11 @@ export class ApiService {
   // private resetPassword = "http://192.168.10.2:3000/onboarding/resetPassword";
 
   //api url path define pks
-  private forgetPassword = 'http://192.168.10.53:3000/onboarding/forgotPassword'
-  private onUpdatePasswored = 'http://192.168.10.53:3000/onboarding/updateForgotPassword';
-  private changePassword = 'http://192.168.10.53:3000/onboarding/resetPassword';
+  private forgetPassword = `${environment.baseUrl}${API_PATH.FORGET_PASSWORD}`;
+  private onUpdatePasswored = `${environment.baseUrl}${API_PATH.ON_UPDATE_FORGET_PASSWORD}`;
+  private changePassword = `${environment.baseUrl}${API_PATH.CHANGE_PASSWORD}`;
   constructor(private http: HttpClient) { }
-
+  
   //forget Password 
   forgetPasswordFun(data:any){
     return this.http.post(this.forgetPassword,data)

@@ -27,15 +27,15 @@
           id="menu"
         >
           <li class="nav-item">
-            <!--routerLink="/admin/user-list"-->
-            <a class="nav-link align-middle px-0" (click)="onUserList()">
+            <!--  (click)="onUserList()"-->
+            <a routerLink="/admin/user-list" class="nav-link align-middle px-0" >
               <i class="fs-4 bi-house"></i>
               <span class="ms-1 d-none d-sm-inline">User List</span>
             </a>
           </li>
           <li>
             <!--routerLink="/admin/add-product"-->
-            <a class="nav-link px-0 align-middle" (click)="onAddProdcut()">
+            <a routerLink="/admin/add-product" class="nav-link px-0 align-middle" >
               <i class="fs-4 bi-table"></i>
               <span class="ms-1 d-none d-sm-inline">Add New Product</span></a
             >
@@ -50,14 +50,14 @@
             </a>
           </li>
 
-          <li>
-            <a class="nav-link px-0 align-middle">
+          <!-- <li>
+            <a routerLink="/admin/add-product" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-people"></i>
-              <span class="ms-1 d-none d-sm-inline" (click)="onProductEdit()"
+              <span class="ms-1 d-none d-sm-inline" 
                 >Product Edit</span
               >
             </a>
-          </li>
+          </li> -->
           <li>
             <button type="button" class="btn btn-danger" (click)="logout()">
               Logout
@@ -69,24 +69,29 @@
     </div>
     <div class="col py-3">
       <h1 class="text-center text-info">Welcome To Admin Dashboard</h1>
+
+      <!--Named Router Outlet-->
+      <div class="outlet">
+        <router-outlet name="details"></router-outlet>
+      </div>
       <!-- Content area... -->
       <!--User List Component Load Here-->
-      <div *ngIf="userList">
+      <!-- <div *ngIf="userList">
         <app-user-list></app-user-list>
-      </div>
+      </div> -->
       <!--Add New Product Component Load Here-->
-      <div *ngIf="addProduct">
+      <!-- <div *ngIf="addProduct">
         <app-product-add></app-product-add>
-      </div>
+      </div> -->
       <!-- Product List Component Load Here-->
       <!-- <div *ngIf="productList">
         <app-product-list></app-product-list>
       </div> -->
        <!-- Product Edit Component Load Here-->
-       <div *ngIf="productEdit">
+       <!-- <div *ngIf="productEdit">
         <app-product-edit></app-product-edit>
-      </div>
-      <router-outlet></router-outlet>
+      </div> -->
+      <!-- <router-outlet></router-outlet> -->
     </div>
   </div>
 </div>
