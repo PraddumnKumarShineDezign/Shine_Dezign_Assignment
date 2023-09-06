@@ -1,0 +1,34 @@
+.buttonn{
+    float: right;
+    margin-top: 10px;
+}
+/* Define a custom CSS class for your table */
+.custom-table {
+    width: 100%; /* Make the table expand to the full width of its container */
+    border-collapse: collapse; /* Collapse table borders */
+    margin-bottom: 20px; /* Add some space below the table */
+  }
+  
+  /* Style table headers */
+  .custom-table th {
+    background-color: #f2f2f2; /* Light gray background for header row */
+    font-weight: bold;
+  }
+  
+  /* Style table rows */
+  .custom-table td, .custom-table th {
+    padding: 10px; /* Add padding to cells */
+    text-align: left; /* Align text to the left within cells */
+    border: 1px solid #ddd; /* Add a light gray border around cells */
+  }
+  
+  /* Style table rows on hover */
+  .custom-table tbody tr:hover {
+    background-color: #e0e0e0; /* Light gray background on hover */
+  }
+  
+  /* Add a scrollbar for horizontal scrolling on smaller screens */
+  .table-responsive {
+    overflow-x: auto;
+  }
+  

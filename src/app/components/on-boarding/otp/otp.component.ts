@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
@@ -9,16 +10,22 @@ import { Router } from '@angular/router';
 })
 export class OtpComponent  implements OnInit{
   title = 'otp';
+  // id !:string;
+  id!: string;
+  userId!: any;
   form: FormGroup;
   formInput = ['input1', 'input2', 'input3', 'input4', 'input5', 'input6'];
   @ViewChildren('formRow') rows: any;
   
 
   ngOnInit() {
-
+    // this.authService.userIdSubject.subscribe(userId => {
+    //   this.id = userId ;
+    //   console.log("userIDDDD", this.id);
+    // });
   }
 
-  constructor(private apiService : ApiService,private router : Router) {
+  constructor(private apiService : ApiService,private router : Router,private authService:AuthService) {
     this.form = this.toFormGroup(this.formInput);
   }
 
@@ -45,16 +52,19 @@ export class OtpComponent  implements OnInit{
   }
 
   onSubmit() {
-    const otpValues = this.formInput.map(input => this.form.get(input)?.value.toString()).join('');
- 
-    console.log("otp", otpValues);
-    
-    this.apiService.otp( {otp: otpValues} ).subscribe(
+    const otpValues = this.formInput.map(input => this.form.get(input)?.value).join('');
+  const otpAsNumber = parseInt(otpValues, 10);
+  console.log("otp", otpAsNumber);
+  // const _id = this.id ?? '';
+  this.authService.userIdSubject.subscribe(_id=>{
+    console.log("ObservableVal",_id)
+    this.userId=_id;
+  })
+    this.apiService.otp( {otp: otpAsNumber, id: this.userId} ).subscribe(
       (response) => {
         console.log("otp response", response);
         this.router.navigate(['/login']);
       }
     );
   }
-  
 }

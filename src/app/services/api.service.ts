@@ -42,9 +42,13 @@ export class ApiService {
     return this.http.post(this.apiUrl, data);
   }
 
-  otp(data:any):Observable<any>{
-    return this.http.post(this.otpUrl,data)
+  // otp(data:any):Observable<any>{
+  //   return this.http.post(this.otpUrl,data)
+  // }
+  otp(data: { otp: number, id: string }): Observable<any> {
+    return this.http.post(this.otpUrl, data);
   }
+  
 
   login(data:any):Observable<any>{
     return this.http.post(this.loginUrl,data)

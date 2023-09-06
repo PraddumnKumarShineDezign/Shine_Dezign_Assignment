@@ -30,17 +30,29 @@
                 </div>
               </div>
               
-              <div class="row">
+              <!-- <div class="row"> -->
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <input type="text" id="password" class="form-control form-control-lg" formControlName="password" />
                     <label class="form-label" for="password">Password *</label>
                   </div>
-                  <div *ngIf="(f['password'].invalid && (f['password'].dirty || f['password'].touched))" class="text-danger">
+
+                  <div *ngIf="(f['password'].invalid && (f['password'].dirty || f['password'].touched  ))" class="text-danger">
                     <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
-                    <div *ngIf="f['password'].errors?.['minlength']">Minimum length must be 6.</div>
+                    <div *ngIf="f['password'].errors?.['pattern']">Please use a strong password (at least one special character, one digit, one capital letter, and one small letter).</div>
                   </div>
-                  
+                </div>
+
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="countryCode" class="form-control form-control-lg" formControlName="countryCode" />
+                    <label class="form-label" for="countryCode">Country Code *</label>
+                  </div>
+                  <div *ngIf="(f['countryCode'].invalid && (f['password'].dirty || f['password'].touched))" class="text-danger">
+                    <div *ngIf="f['countryCode'].errors?.['required']">Country Code is required.</div>
+                  </div>     
                 </div>
               </div>
               

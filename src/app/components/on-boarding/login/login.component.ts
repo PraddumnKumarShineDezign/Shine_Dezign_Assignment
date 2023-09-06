@@ -45,7 +45,8 @@ secretKey:string='abcd';
             }
             if (response.data.role === 'USER') {
               setTimeout(() => {
-                this.router.navigate(['/user/dashboard']);
+                this._commonService.showSuccess('success',response.data.message)
+                this.router.navigate(['/user']);
               }, 2000);
             }
           }

@@ -16,6 +16,8 @@ import { OnUpdatePasswordComponent } from './components/on-boarding/on-update-pa
 import { ChangePasswordComponent } from './components/on-boarding/change-password/change-password.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
 import { HeaderComponent } from './layout/header/header.component';
+import { UserModule } from './modules/user-module/user-module';
+// import { UserDashboardComponent } from './modules/user-module/components/user-dashboard/user-dashboard.component';
 // import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 @NgModule({
@@ -27,7 +29,7 @@ import { HeaderComponent } from './layout/header/header.component';
     ForgetPasswordComponent,
     OnUpdatePasswordComponent,
     ChangePasswordComponent,
-    HeaderComponent,
+    HeaderComponent
     // SidebarComponent,
     
   ],
@@ -35,9 +37,11 @@ import { HeaderComponent } from './layout/header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    UserModule,
     ToastrModule.forRoot({
       preventDuplicates: true,
       positionClass :'toast-top-right',
+    
       
   }),
   ReactiveFormsModule,
